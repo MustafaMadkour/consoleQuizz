@@ -48,13 +48,23 @@
         ["True","False"],
         1
     );
+
     
-    // display random question
     var questions = [q1,q2,q3,q4,q5];
-    var n = Math.floor(Math.random()*questions.length);
-    questions[n].viewQuest();
     
-    var answer = parseInt(prompt("Please select the correct answer."));
+    function nextQuest(){
+        // display random question
+        var n = Math.floor(Math.random()*questions.length);
+        questions[n].viewQuest();
     
-    questions[n].checkAnswer(answer);
+        var answer = prompt("Please select the correct answer.");
+    
+        
+        if (answer !== "exit"){
+            questions[n].checkAnswer(parseInt(answer)); 
+            nextQuest();
+        };
+    }
+    //view a random question again
+    nextQuest();
 })();
